@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Güney Emlakçılık</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap');
+
+        :root {
+            --gold: #c9a84c;
+            --gold-light: #e8d48b;
+            --gold-dark: #9a7b2d;
+            --dark: #0a0a0a;
+            --dark-card: #141414;
+            --dark-surface: #1a1a1a;
+            --dark-border: #2a2a2a;
+            --text: #e8e8e8;
+            --text-muted: #888;
+            --premium-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --premium-glow: rgba(102, 126, 234, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 0%, rgba(201, 168, 76, 0.03) 0%, transparent 60%);
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .hero-particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle 4s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 0.6; transform: scale(1); }
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .brand-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.6;
+            margin-top: 8px;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 35px auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-divider::after {
+            content: '◆';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--gold);
+            font-size: 0.5rem;
+            background: var(--dark);
+            padding: 0 10px;
+        }
+
+        .hero-tagline {
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+        }
+
+        .hero-tagline .for-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: var(--gold-light);
+            margin-bottom: 8px;
+        }
+
+        .hero-tagline .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.7;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-cta {
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 36px;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta a::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; right: 0; bottom: 0;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .hero-cta a:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta a:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(201, 168, 76, 0.15);
+        }
+
+        .scroll-arrow {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            opacity: 0.4;
+            animation: floatDown 2s ease-in-out infinite;
+            font-size: 1.5rem;
+            z-index: 1;
+        }
+
+        @keyframes floatDown {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ============ NAVBAR (sticky after scroll) ============ */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--dark-border);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .navbar .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--gold);
+        }
+
+        .navbar .nav-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .navbar .nav-sub {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .section-header .gold-line {
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+            margin: 20px auto 0;
+        }
+
+        /* ============ PROPERTY CARDS ============ */
+        .properties-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .properties-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1100px) {
+            .properties-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .property-card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .property-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(201, 168, 76, 0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(201, 168, 76, 0.05);
+        }
+
+        /* Premium Card */
+        .property-card.premium {
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            position: relative;
+            grid-column: 1 / -1;
+        }
+
+        @media (min-width: 768px) {
+            .property-card.premium {
+                grid-column: 1 / -1;
+            }
+
+            .premium .card-inner {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .property-card.premium::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2), rgba(102, 126, 234, 0.2));
+            border-radius: 16px;
+            z-index: -1;
+            animation: premiumGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes premiumGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .property-card.premium:hover {
+            border-color: rgba(102, 126, 234, 0.6);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 60px var(--premium-glow);
+        }
+
+        /* Card Image */
+        .card-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: var(--dark-surface);
+        }
+
+        .premium .card-image {
+            height: 100%;
+            min-height: 300px;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .property-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-image-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        }
+
+        /* Badges */
+        .card-badges {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .badge-location {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .badge-premium {
+            background: var(--premium-gradient);
+            color: white;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { box-shadow: 0 0 10px var(--premium-glow); }
+            50% { box-shadow: 0 0 20px var(--premium-glow), 0 0 40px rgba(102, 126, 234, 0.15); }
+        }
+
+        /* Favorite heart */
+        .card-fav {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .card-fav:hover {
+            background: rgba(201, 76, 76, 0.3);
+            border-color: rgba(201, 76, 76, 0.5);
+        }
+
+        .card-fav.active {
+            background: rgba(201, 76, 76, 0.8);
+            border-color: transparent;
+        }
+
+        /* Card Body */
+        .card-body {
+            padding: 22px;
+        }
+
+        .card-district {
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .premium .card-district {
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .card-features {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .feature-icon {
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        .card-description {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 18px;
+            font-weight: 300;
+        }
+
+        .card-divider {
+            height: 1px;
+            background: var(--dark-border);
+            margin-bottom: 16px;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .premium .card-price {
+            font-size: 1.8rem;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-price small {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            -webkit-text-fill-color: var(--text-muted);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            border: 1px solid var(--dark-border);
+            border-radius: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .card-link:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .premium .card-link {
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .premium .card-link:hover {
+            border-color: rgba(102, 126, 234, 0.7);
+            color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.15);
+        }
+
+        /* ============ MAP PLACEHOLDER ============ */
+        .map-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .map-container {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 16px;
+            overflow: hidden;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(1) invert(0.92) contrast(0.9);
+        }
+
+        /* ============ FOOTER ============ */
+        .site-footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--dark-border);
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .footer-heart {
+            color: #c0392b;
+            display: inline-block;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* ============ IMAGE GALLERY MODAL ============ */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+        }
+
+        .gallery-modal img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .gallery-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: background 0.3s;
+        }
+
+        .gallery-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* ============ LOADING ANIMATION ============ */
+        .page-loader {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--dark);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.3s;
+        }
+
+        .loader-bar {
+            width: 150px;
+            height: 2px;
+            background: var(--dark-border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loader-bar-inner {
+            width: 0;
+            height: 100%;
+            background: var(--gold);
+            border-radius: 2px;
+            animation: loadBar 2s ease forwards 0.5s;
+        }
+
+        @keyframes loadBar {
+            to { width: 100%; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* ============ CARD IMAGE SLIDER ============ */
+        .image-slider {
+            position: relative;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 5;
+        }
+
+        .slider-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            transition: background 0.3s;
+            opacity: 0;
+        }
+
+        .property-card:hover .slider-nav {
+            opacity: 1;
+        }
+
+        .slider-nav:hover {
+            background: rgba(0,0,0,0.7);
+        }
+
+        .slider-prev { left: 10px; }
+        .slider-next { right: 10px; }
+
+        /* Premium specific image styles */
+        .premium .card-image {
+            min-height: 350px;
+        }
+
+        @media (max-width: 767px) {
+            .premium .card-inner {
+                display: block;
+            }
+            .premium .card-image {
+                min-height: 260px;
+            }
+        }
+
+        /* premium star particles */
+        .premium-stars {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .p-star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: pStarFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes pStarFloat {
+            0%, 100% { opacity: 0; transform: translateY(0) scale(0); }
+            50% { opacity: 0.8; transform: translateY(-20px) scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo">Güney Emlakçılık</div>
+        <div class="loader-bar">
+            <div class="loader-bar-inner"></div>
+        </div>
+    </div>
+
+    <!-- ======= HERO ======= -->
+    <section class="hero">
+        <div class="hero-particles" id="heroParticles"></div>
+
+        <div class="logo-container">
+            <div class="logo-icon">
+                <svg viewBox="0 0 80 80" fill="none">
+                    <path d="M40 10 L65 30 L65 65 L15 65 L15 30 Z" stroke="url(#goldGrad)" stroke-width="2" fill="none"/>
+                    <path d="M32 65 L32 45 L48 45 L48 65" stroke="url(#goldGrad)" stroke-width="2" fill="none"/>
+                    <path d="M10 32 L40 8 L70 32" stroke="url(#goldGrad)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <circle cx="40" cy="30" r="5" stroke="url(#goldGrad)" stroke-width="1.5" fill="none"/>
+                    <defs>
+                        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#e8d48b"/>
+                            <stop offset="50%" style="stop-color:#c9a84c"/>
+                            <stop offset="100%" style="stop-color:#9a7b2d"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <h1 class="brand-name">Güney Emlakçılık</h1>
+            <div class="brand-sub">Est. 2025</div>
+        </div>
+
+        <div class="hero-divider"></div>
+
+        <div class="hero-tagline">
+            <div class="for-text">Prenses Bey için</div>
+            <p class="subtitle">en uygun evlerin adresi</p>
+        </div>
+
+        <div class="hero-cta">
+            <a href="#properties">
+                <span>Evleri Keşfet</span>
+                <span>→</span>
+            </a>
+        </div>
+
+        <div class="scroll-arrow">↓</div>
+    </section>
+
+    <!-- ======= NAVBAR ======= -->
+    <nav class="navbar">
+        <span class="nav-logo">Güney</span>
+        <span class="nav-dot"></span>
+        <span class="nav-sub">Emlakçılık</span>
+    </nav>
+
+    <!-- ======= PROPERTIES ======= -->
+    <div id="properties">
+        <div class="section-header">
+            <h2>Seçilmiş Evler</h2>
+            <p>Prenses Bey'e özenle seçilmiş İstanbul'un en güzel lokasyonları</p>
+            <div class="gold-line"></div>
+        </div>
+
+        <div class="properties-grid">
+
+            <!-- CARD 1 - Suadiye -->
+            <div class="property-card" data-aos>
+                <div class="card-image">
+                    <div class="image-slider" data-slider="1">
+                        <div class="slide active">
+                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="Suadiye Daire">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="Suadiye İç">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop" alt="Suadiye Salon">
+                        </div>
+                    </div>
+                    <div class="slider-dots">
+                        <div class="slider-dot active" onclick="goSlide(1,0)"></div>
+                        <div class="slider-dot" onclick="goSlide(1,1)"></div>
+                        <div class="slider-dot" onclick="goSlide(1,2)"></div>
+                    </div>
+                    <button class="slider-nav slider-prev" onclick="prevSlide(1)">‹</button>
+                    <button class="slider-nav slider-next" onclick="nextSlide(1)">›</button>
+                    <div class="card-image-overlay"></div>
+                    <div class="card-badges">
+                        <span class="badge badge-location">📍 Kadıköy</span>
+                    </div>
+                    <div class="card-fav" onclick="toggleFav(this)">🤍</div>
+                </div>
+                <div class="card-body">
+                    <div class="card-district">Kadıköy · Suadiye</div>
+                    <h3 class="card-title">Suadiye'de Denize Yakın Daire</h3>
+                    <div class="card-features">
+                        <div class="feature"><span class="feature-icon">🏠</span> 3+1</div>
+                        <div class="feature"><span class="feature-icon">📐</span> 140 m²</div>
+                        <div class="feature"><span class="feature-icon">🏢</span> 4. Kat</div>
+                        <div class="feature"><span class="feature-icon">🌊</span> Deniz Manzarası</div>
+                    </div>
+                    <p class="card-description">Suadiye Bağdat Caddesi'ne yürüme mesafesinde, deniz kokusunu evinizde hissedeceğiniz özel bir yaşam alanı.</p>
+                    <div class="card-divider"></div>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            ₺8.500.000
+                            <small>Satılık Daire</small>
+                        </div>
+                        <a href="https://www.hepsiemlak.com/istanbul-kadikoy-suadiye-satilik/daire/164835-36" target="_blank" class="card-link">
+                            Detaylar →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2 - Pürtelaş Hasan Efendi -->
+            <div class="property-card" data-aos>
+                <div class="card-image">
+                    <div class="image-slider" data-slider="2">
+                        <div class="slide active">
+                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop" alt="Beyoğlu Daire">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="Beyoğlu İç">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=600&h=400&fit=crop" alt="Beyoğlu Mutfak">
+                        </div>
+                    </div>
+                    <div class="slider-dots">
+                        <div class="slider-dot active" onclick="goSlide(2,0)"></div>
+                        <div class="slider-dot" onclick="goSlide(2,1)"></div>
+                        <div class="slider-dot" onclick="goSlide(2,2)"></div>
+                    </div>
+                    <button class="slider-nav slider-prev" onclick="prevSlide(2)">‹</button>
+                    <button class="slider-nav slider-next" onclick="nextSlide(2)">›</button>
+                    <div class="card-image-overlay"></div>
+                    <div class="card-badges">
+                        <span class="badge badge-location">📍 Beyoğlu</span>
+                    </div>
+                    <div class="card-fav" onclick="toggleFav(this)">🤍</div>
+                </div>
+                <div class="card-body">
+                    <div class="card-district">Beyoğlu · Pürtelaş Hasan Efendi</div>
+                    <h3 class="card-title">Tarihi Beyoğlu'nda Karakterli Daire</h3>
+                    <div class="card-features">
+                        <div class="feature"><span class="feature-icon">🏠</span> 2+1</div>
+                        <div class="feature"><span class="feature-icon">📐</span> 95 m²</div>
+                        <div class="feature"><span class="feature-icon">🏢</span> 3. Kat</div>
+                        <div class="feature"><span class="feature-icon">🏛️</span> Tarihi Bina</div>
+                    </div>
+                    <p class="card-description">İstiklal Caddesi'ne adım mesafede, tarihi dokunun modern konforla buluştuğu benzersiz bir mekan.</p>
+                    <div class="card-divider"></div>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            ₺5.200.000
+                            <small>Satılık Daire</small>
+                        </div>
+                        <a href="https://www.hepsiemlak.com/istanbul-beyoglu-purtelas-hasan-efendi-satilik/daire/29114-1132" target="_blank" class="card-link">
+                            Detaylar →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3 - Tomtom -->
+            <div class="property-card" data-aos>
+                <div class="card-image">
+                    <div class="image-slider" data-slider="3">
+                        <div class="slide active">
+                            <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&h=400&fit=crop" alt="Tomtom Daire">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&h=400&fit=crop" alt="Tomtom İç">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1616137466211-f736a1ec1bd2?w=600&h=400&fit=crop" alt="Tomtom Balkon">
+                        </div>
+                    </div>
+                    <div class="slider-dots">
+                        <div class="slider-dot active" onclick="goSlide(3,0)"></div>
+                        <div class="slider-dot" onclick="goSlide(3,1)"></div>
+                        <div class="slider-dot" onclick="goSlide(3,2)"></div>
+                    </div>
+                    <button class="slider-nav slider-prev" onclick="prevSlide(3)">‹</button>
+                    <button class="slider-nav slider-next" onclick="nextSlide(3)">›</button>
+                    <div class="card-image-overlay"></div>
+                    <div class="card-badges">
+                        <span class="badge badge-location">📍 Beyoğlu</span>
+                    </div>
+                    <div class="card-fav" onclick="toggleFav(this)">🤍</div>
+                </div>
+                <div class="card-body">
+                    <div class="card-district">Beyoğlu · Tomtom</div>
+                    <h3 class="card-title">Tomtom'da Boğaz Manzaralı Daire</h3>
+                    <div class="card-features">
+                        <div class="feature"><span class="feature-icon">🏠</span> 3+1</div>
+                        <div class="feature"><span class="feature-icon">📐</span> 150 m²</div>
+                        <div class="feature"><span class="feature-icon">🏢</span> 5. Kat</div>
+                        <div class="feature"><span class="feature-icon">🌅</span> Boğaz Manzarası</div>
+                    </div>
+                    <p class="card-description">Galata Kulesi'nin gölgesinde, Boğaz'ın büyüleyici manzarasıyla uyanacağınız prestijli bir adres.</p>
+                    <div class="card-divider"></div>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            ₺12.800.000
+                            <small>Satılık Daire</small>
+                        </div>
+                        <a href="https://www.hepsiemlak.com/istanbul-beyoglu-tomtom-satilik/daire/1358-4250" target="_blank" class="card-link">
+                            Detaylar →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 4 - Fetihtepe -->
+            <div class="property-card" data-aos>
+                <div class="card-image">
+                    <div class="image-slider" data-slider="4">
+                        <div class="slide active">
+                            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=400&fit=crop" alt="Fetihtepe Daire">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&h=400&fit=crop" alt="Fetihtepe İç">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=600&h=400&fit=crop" alt="Fetihtepe Salon">
+                        </div>
+                    </div>
+                    <div class="slider-dots">
+                        <div class="slider-dot active" onclick="goSlide(4,0)"></div>
+                        <div class="slider-dot" onclick="goSlide(4,1)"></div>
+                        <div class="slider-dot" onclick="goSlide(4,2)"></div>
+                    </div>
+                    <button class="slider-nav slider-prev" onclick="prevSlide(4)">‹</button>
+                    <button class="slider-nav slider-next" onclick="nextSlide(4)">›</button>
+                    <div class="card-image-overlay"></div>
+                    <div class="card-badges">
+                        <span class="badge badge-location">📍 Beyoğlu</span>
+                    </div>
+                    <div class="card-fav" onclick="toggleFav(this)">🤍</div>
+                </div>
+                <div class="card-body">
+                    <div class="card-district">Beyoğlu · Fetihtepe</div>
+                    <h3 class="card-title">Fetihtepe'de Yatırımlık Daire</h3>
+                    <div class="card-features">
+                        <div class="feature"><span class="feature-icon">🏠</span> 2+1</div>
+                        <div class="feature"><span class="feature-icon">📐</span> 85 m²</div>
+                        <div class="feature"><span class="feature-icon">🏢</span> 2. Kat</div>
+                        <div class="feature"><span class="feature-icon">🔑</span> Sıfır</div>
+                    </div>
+                    <p class="card-description">Beyoğlu'nun gelişen bölgesinde, ulaşım olanaklarıyla öne çıkan uygun fiyatlı yaşam fırsatı.</p>
+                    <div class="card-divider"></div>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            ₺3.750.000
+                            <small>Satılık Daire</small>
+                        </div>
+                        <a href="https://www.hepsiemlak.com/istanbul-beyoglu-fetihtepe-satilik/daire/167213-72" target="_blank" class="card-link">
+                            Detaylar →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 5 - Dikilitaş -->
+            <div class="property-card" data-aos>
+                <div class="card-image">
+                    <div class="image-slider" data-slider="5">
+                        <div class="slide active">
+                            <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&h=400&fit=crop" alt="Dikilitaş Daire">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&h=400&fit=crop" alt="Dikilitaş İç">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600&h=400&fit=crop" alt="Dikilitaş Mutfak">
+                        </div>
+                    </div>
+                    <div class="slider-dots">
+                        <div class="slider-dot active" onclick="goSlide(5,0)"></div>
+                        <div class="slider-dot" onclick="goSlide(5,1)"></div>
+                        <div class="slider-dot" onclick="goSlide(5,2)"></div>
+                    </div>
+                    <button class="slider-nav slider-prev" onclick="prevSlide(5)">‹</button>
+                    <button class="slider-nav slider-next" onclick="nextSlide(5)">›</button>
+                    <div class="card-image-overlay"></div>
+                    <div class="card-badges">
+                        <span class="badge badge-location">📍 Beşiktaş</span>
+                    </div>
+                    <div class="card-fav" onclick="toggleFav(this)">🤍</div>
+                </div>
+                <div class="card-body">
+                    <div class="card-district">Beşiktaş · Dikilitaş</div>
+                    <h3 class="card-title">Dikilitaş'ta Prestijli Daire</h3>
+                    <div class="card-features">
+                        <div class="feature"><span class="feature-icon">🏠</span> 3+1</div>
+                        <div class="feature"><span class="feature-icon">📐</span> 160 m²</div>
+                        <div class="feature"><span class="feature-icon">🏢</span> 6. Kat</div>
+                        <div class="feature"><span class="feature-icon">🅿️</span> Kapalı Otopark</div>
+                    </div>
+                    <p class="card-description">Beşiktaş'ın en nezih mahallelerinden Dikilitaş'ta, yeşillikler içinde huzurlu ve konforlu yaşam.</p>
+                    <div class="card-divider"></div>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            ₺14.500.000
+                            <small>Satılık Daire</small>
+                        </div>
+                        <a href="https://www.hepsiemlak.com/istanbul-besiktas-dikilitas-satilik/daire/31303-140879" target="_blank" class="card-link">
+                            Detaylar →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======= PREMIUM CARD - Levazım ======= -->
+            <div class="property-card premium" data-aos>
+                <div class="premium-stars" id="premiumStars"></div>
+                <div class="card-inner">
+                    <div class="card-image">
+                        <div class="image-slider" data-slider="6">
+                            <div class="slide active">
+                                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop" alt="Levazım Residence">
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop" alt="Levazım İç">
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop" alt="Levazım Salon">
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop" alt="Levazım Manzara">
+                            </div>
+                        </div>
+                        <div class="slider-dots">
+                            <div class="slider-dot active" onclick="goSlide(6,0)"></div>
+                            <div class="slider-dot" onclick="goSlide(6,1)"></div>
+                            <div class="slider-dot" onclick="goSlide(6,2)"></div>
+                            <div class="slider-dot" onclick="goSlide(6,3)"></div>
+                        </div>
+                        <button class="slider-nav slider-prev" onclick="prevSlide(6)">‹</button>
+                        <button class="slider-nav slider-next" onclick="nextSlide(6)">›</button>
+                        <div class="card-image-overlay"></div>
+                        <div class="card-badges">
+                            <span class="badge badge-premium">✦ PREMIUM</span>
+                            <span class="badge badge-location">📍 Beşiktaş</span>
+                        </div>
+                        <div class="card-fav" onclick="toggleFav(this)">🤍</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-district">Beşiktaş · Levazım</div>
+                        <h3 class="card-title">Levazım'da Ultra Lüks Residence</h3>
+                        <div class="card-features">
+                            <div class="feature"><span class="feature-icon">🏠</span> 4+1</div>
+                            <div class="feature"><span class="feature-icon">📐</span> 250 m²</div>
+                            <div class="feature"><span class="feature-icon">🏢</span> 18. Kat</div>
+                            <div class="feature"><span class="feature-icon">🌅</span> Boğaz Manzarası</div>
+                            <div class="feature"><span class="feature-icon">🏊</span> Havuz</div>
+                            <div class="feature"><span class="feature-icon">💪</span> Fitness</div>
+                            <div class="feature"><span class="feature-icon">🛡️</span> 24/7 Güvenlik</div>
+                            <div class="feature"><span class="feature-icon">🅿️</span> 2 Otopark</div>
+                        </div>
+                        <p class="card-description">İstanbul'un en prestijli lokasyonlarından Levazım'da, 5 yıldızlı otel konforunda residence yaşamı. Özel havuz, spa, fitness merkezi, concierge hizmeti ve eşsiz Boğaz manzarası ile hayalinizdeki yaşam sizi bekliyor. Prenses Bey'e en yakışacak adres.</p>
+                        <div class="card-divider"></div>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                ₺32.000.000
+                                <small>Satılık Residence</small>
+                            </div>
+                            <a href="https://www.hepsiemlak.com/istanbul-besiktas-levazim-satilik/residence/8525-56219" target="_blank" class="card-link">
+                                ✦ Detaylar →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ======= MAP SECTION ======= -->
+    <div class="section-header">
+        <h2>Lokasyonlar</h2>
+        <p>Tüm evlerin konumlandığı İstanbul'un en değerli bölgeleri</p>
+        <div class="gold-line"></div>
+    </div>
+
+    <div class="map-section">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96251.37439895025!2d28.88702495!3d41.01520945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7650656bd63%3A0x8ca058b28c20b6c3!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- ======= FOOTER ======= -->
+    <footer class="site-footer">
+        <div class="footer-brand">Güney Emlakçılık</div>
+        <p class="footer-text">
+            Prenses Bey için <span class="footer-heart">♥</span> ile hazırlandı · 2025
+        </p>
+    </footer>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="gallery-close" onclick="closeGallery()">×</div>
+        <img id="galleryImage" src="" alt="">
+    </div>
+
+    <script>
+        // ===== Page Loader =====
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('pageLoader').classList.add('hidden');
+            }, 2500);
+        });
+
+        // ===== Hero Particles =====
+        const heroParticles = document.getElementById('heroParticles');
+        for (let i = 0; i < 40; i++) {
+            const p = document.createElement('div');
+            p.className = 'hero-particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            p.style.animationDuration = (3 + Math.random() * 4) + 's';
+            p.style.animationDelay = (Math.random() * 5) + 's';
+            p.style.width = p.style.height = (1 + Math.random() * 3) + 'px';
+            heroParticles.appendChild(p);
+        }
+
+        // ===== Premium Stars =====
+        const premiumStars = document.getElementById('premiumStars');
+        if (premiumStars) {
+            for (let i = 0; i < 15; i++) {
+                const s = document.createElement('div');
+                s.className = 'p-star';
+                s.style.left = Math.random() * 100 + '%';
+                s.style.top = Math.random() * 100 + '%';
+                s.style.animationDuration = (2 + Math.random() * 3) + 's';
+                s.style.animationDelay = (Math.random() * 3) + 's';
+                premiumStars.appendChild(s);
+            }
+        }
+
+        // ===== Image Slider =====
+        const sliderStates = {};
+
+        function initSliders() {
+            document.querySelectorAll('.image-slider').forEach(slider => {
+                const id = slider.dataset.slider;
+                sliderStates[id] = 0;
+            });
+        }
+
+        function goSlide(sliderId, index) {
+            const slider = document.querySelector(`[data-slider="${sliderId}"]`);
+            const slides = slider.querySelectorAll('.slide');
+            const dots = slider.parentElement.querySelectorAll('.slider-dot');
+
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            sliderStates[sliderId] = index;
+        }
+
+        function nextSlide(sliderId) {
+            const slider = document.querySelector(`[data-slider="${sliderId}"]`);
+            const total = slider.querySelectorAll('.slide').length;
+            const next = (sliderStates[sliderId] + 1) % total;
+            goSlide(sliderId, next);
+        }
+
+        function prevSlide(sliderId) {
+            const slider = document.querySelector(`[data-slider="${sliderId}"]`);
+            const total = slider.querySelectorAll('.slide').length;
+            const prev = (sliderStates[sliderId] - 1 + total) % total;
+            goSlide(sliderId, prev);
+        }
+
+        initSliders();
+
+        // Auto-slide for premium
+        setInterval(() => {
+            nextSlide(6);
+        }, 4000);
+
+        // ===== Favorite Toggle =====
+        function toggleFav(el) {
+            el.classList.toggle('active');
+            el.textContent = el.classList.contains('active') ? '❤️' : '🤍';
+        }
+
+        // ===== Gallery Modal =====
+        function openGallery(src) {
+            document.getElementById('galleryImage').src = src;
+            document.getElementById('galleryModal').classList.add('active');
+        }
+
+        function closeGallery() {
+            document.getElementById('galleryModal').classList.remove('active');
+        }
+
+        document.getElementById('galleryModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeGallery();
+        });
+
+        // ===== Scroll Reveal Animation =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.property-card').forEach((card, i) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(40px)';
+            card.style.transition = `opacity 0.6s ease ${i * 0.15}s, transform 0.6s ease ${i * 0.15}s, border-color 0.4s ease, box-shadow 0.4s ease`;
+            observer.observe(card);
+        });
+
+        // ===== Touch Swipe for Sliders =====
+        document.querySelectorAll('.image-slider').forEach(slider => {
+            let startX = 0;
+            let endX = 0;
+            const id = slider.dataset.slider;
+
+            slider.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+
+            slider.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) nextSlide(id);
+                    else prevSlide(id);
+                }
+            }, { passive: true });
+        });
+    </script>
+</body>
+</html>
